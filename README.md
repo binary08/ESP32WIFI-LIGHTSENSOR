@@ -2,6 +2,8 @@
 
 Using ESP32
 
+lightsensor used: https://wiki.dfrobot.com/DFRobot_Ambient_Light_Sensor_SKU_DFR0026?gad_source=1&gad_campaignid=834127384&gbraid=0AAAAADucPlB86-uzc1IMnlQTzuwzvVIlH&gclid=EAIaIQobChMIgJzd1dWzjQMVsqVmAh0yOzg0EAAYASAAEgL9dfD_BwE
+
 Hardware set-up
 - ESP32_3V3 --> Light sensor 'VCC' wire (red) 
 - ESP32_GND (Next to 3V3) --> Light sensor 'GND' wire (black)
@@ -14,7 +16,7 @@ Software set-up
 - Using Coolterm, Use TCP port, use the initial output from serial monitor to get IP and port number
 
 During initial upload, ESP32 will be connected to computer. Get IP and port number by opening serial monitor and check it can connect with mobile data
-- for iphone: ensure maximise compatibility is turned on
+- for iphone: ENSURE maximise compatibility is turned on (IMPORTANT, forces mobile data to use 2.4 GHz, will not work otherwise)
 
 Once you have unplug from computer and plug into powerbank, ensure that computer is connected to hotspot, you may wish to press EN button once to restart the code.
 esp32 and computer should now be connected via mobile data
