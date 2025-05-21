@@ -16,9 +16,11 @@ Software set-up
 - Using Coolterm, Use TCP port, use the initial output from serial monitor to get IP and port number
 
 During initial upload, ESP32 will be connected to computer. Get IP and port number by opening serial monitor and check it can connect with mobile data
-- for iphone: ENSURE maximise compatibility is turned on (IMPORTANT, forces mobile data to use 2.4 GHz, will not work otherwise)
+
+For iphone: ENSURE maximise compatibility is turned on (IMPORTANT, forces mobile data to use 2.4 GHz, will not work otherwise)
 
 Once you have unplug from computer and plug into powerbank, ensure that computer is connected to hotspot, you may wish to press EN button once to restart the code.
+
 esp32 and computer should now be connected via mobile data
 
 On coolterm, connect to the tcp port that you set-up based on your IP and port. 
@@ -29,5 +31,6 @@ On coolterm, connect to the tcp port that you set-up based on your IP and port.
 The data should be saved in a textfile which you can import into sheets to edit accordingly to get lux-time.
 
 Troubleshooting: press EN button on ESP32, chatgpt
+
 Some of the data, when imported into sheets, may be missing and may not be logical, edit the data accordingly to get clean data.
 
