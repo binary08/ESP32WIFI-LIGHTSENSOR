@@ -1,0 +1,55 @@
+#include <WiFi.h>
+
+// Replace with your iPhone Hotspot credentials
+const char* ssid = "ABCD";          
+const char* password = "ABCD"; 
+
+WiFiServer server(80);  // Create a server on port 80
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);  // Allow Serial Monitor to initialize
+
+  Serial.print("Connecting to WiFi: ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+
+  int attempts = 0;
+  while (WiFi.status() != WL_CONNECTED && attempts < 20) {
+    delay(500);
+    Serial.print(".");
+    attempts++;
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.println("\n✅ Connected to WiFi");
+    Serial.print("IP Address: ");
+    Serial.println(WiFi.localIP());
+    server.begin();
+  } else {
+    Serial.println("\n❌ Failed to connect to WiFi.");
+  }
+}
+
+void loop() {
+  WiFiClient client = server.available();  // Wait for a client to connect
+
+  if (client) {
+    Serial.println("📡 Client connected");
+    while (client.connected()) {
+      int val = analogRead(34);  // Read light sensor from GPIO 34
+      float voltage = val * (3.3 / 4095.0);
+      float lux = voltage * 500.0;  // Approximate conversion
+
+      client.print("Lux: ");
+      client.println(lux);
+
+      Serial.print("Sent Lux: ");
+      Serial.println(lux);
+
+      delay(500);  // Send every 0.5 sec
+    }
+    client.stop();
+    Serial.println("🔌 Client disconnected");
+  }
+}
